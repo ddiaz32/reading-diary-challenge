@@ -69,7 +69,54 @@ class Book:
 
         return max(counter, key=counter.get)
     
+    def __str__(self) -> str:
+
+
+        if self.rating == Book.EXCELLENT:
+            rating_str = "excellent"
+        elif self.rating == Book.GOOD:
+            rating_str = "good"
+        elif self.rating == Book.BAD:
+            rating_str = "bad"
+        else:
+            rating_str = "unrated"
+
+        return f"""     
+        ISBN: {self.isbn}
+        Title: {self.title}
+        Author: {self.author}
+        Pages: {self.pages}
+        Rating: {rating_str}
+                """
+
+
+
+class ReadinDiary:
+
+    def __init__(self):
+        self.books: dict[str, Book] = {}
+
+    def add_book(self, isbn: str, title: str, author: str, pages: int) -> bool:
+        if isbn in self.books:
+            return False
+        
+        book = Book(isbn, title, author, pages)
+        self.books[isbn] = book
+
+        return True
     
+    
+
+
+
+    
+
+
+book = Book("978123", "Python Avanzado", "David Diaz", 350)
+
+book.set_rating(Book.BAD)
+
+print(book)
 
 
 
