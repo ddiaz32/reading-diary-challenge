@@ -26,6 +26,19 @@ class Book:
         self.rating = Book.UNRATED
         self.notes = []
 
+    def add_note(self, text: str, page: int, date: datetime) -> bool:
+
+        if page > self.pages:
+            return False
+        
+
+        note = Note(text, page, date)
+
+        self.notes.append(note)
+
+        return True
+
+
 
   
 
