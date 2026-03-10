@@ -104,10 +104,25 @@ class ReadinDiary:
         self.books[isbn] = book
 
         return True
-    
-    
+    def search_by_isbn(self, isbn: str) -> Book | None:
+            for book in self.books:
+                if book.isbn == isbn:
+                    return book
+            return None
 
 
+
+    def add_note_to_book(self, isbn: str, text: str, page: int, date: datetime) -> bool:
+        
+
+        book = self.search_by_isbn(isbn)
+
+        if book is None:
+            return False
+
+        return book.add_note(text, page, date)
+
+    
 
     
 
